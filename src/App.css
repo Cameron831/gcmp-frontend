@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .login-form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .login-form input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #56BF70;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .forgot-password,
+  .create-account {
+    margin-top: 10px;
+  }
+  
+  .forgot-password a,
+  .create-account a {
+    color: blue;
+    text-decoration: none;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .signup-form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .signup-form input {
+    width: calc(50% - 5px);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .signup-form .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #56BF70;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .forgot-password-form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .forgot-password-form input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .forgot-password-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: green;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
