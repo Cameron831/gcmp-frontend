@@ -1,0 +1,9 @@
+.form-group {
+  display: grid;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  justify-content: center;  
+}
