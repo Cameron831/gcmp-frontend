@@ -28,16 +28,27 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <div class="container">
+        <h2>Sign In</h2>
+        <form class="login-form" id="login-form">
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <div class="forgot-password">
+          <a href="forgotpass.html">Forgot Password?</a>
+        </div>
+        <div class="create-account">
+          <a href="SignUp.html">Create account</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
