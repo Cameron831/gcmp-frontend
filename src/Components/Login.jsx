@@ -3,7 +3,7 @@ import '../App.css';
 
 const Login = () => {
     return (
-        <div class="container">
+        <div className="container">
         <h2>Sign In</h2>
         <form className="login-form" id="login-form">
           <div>
