@@ -1,34 +1,45 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Teetime from '../components/Teetime'
-import SheetHeader from '../components/SheetHeader'
+
+import {format} from 'date-fns'
+import { DayPicker } from 'react-day-picker'
 
 const Teesheet = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [teetimes, setTeetimes] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // Only state for loading and modal visibility
 
     useEffect(() => {
-        retrieveTeetimesForDay(); // Call to load data on component mount or date change
-    }, [selectedDate]);
+        if (!selectedDate) return;
+    
+        const retrieveTeetimesForDay = async () => {
+            const dateString = selectedDate.toISOString().split('T')[0];
+            try {
+                const response = await axios.get(`http://localhost:3001/teetimes?date=${dateString}`);
+                const filteredTeetimes = response.data.filter(teetime => teetime.players.length < 4);
+                setTeetimes(filteredTeetimes);
+            } catch (error) {
+                console.error('There was an error fetching the teetimes:', error);
+            }
+        };
+    
+        retrieveTeetimesForDay();
+    }, [selectedDate]); // Only selectedDate is necessary here
 
-    const retrieveTeetimesForDay = useCallback(async () => {
-        const dateString = selectedDate.toISOString().split('T')[0];
-        setIsLoading(true); // Ensure loading starts when fetching
-        try {
-            const response = await axios.get(`http://192.168.1.13:3000/teetimes?date=${dateString}`);
-            setTeetimes(response.data);
-        } catch (error) {
-            console.error('There was an error fetching the teetimes:', error);
-        } finally {
-            setIsLoading(false); // Ensure loading ends regardless of the result
-        }
-    }, [selectedDate]); // Dependency array
+    let footer = <p>Pick a day</p>
+    if(selectedDate) {
+        footer = <p>{format(selectedDate, 'PP')}</p>
+    }
 
     return (
         <div className='container'>
-                <SheetHeader /*selectedDate={selectedDate} onDateChange={setSelectedDate}*/ />
-
+                <DayPicker 
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    footer={footer}
+                    showOutsideDays
+                />
                 <div>
                     {teetimes.map((time, index) => (
                         <Teetime key={index} time={time} />

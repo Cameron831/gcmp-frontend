@@ -5,24 +5,28 @@ import Home from './Pages/Home';
 import LoginSignup from "./Pages/LoginSignup";
 import NotFound from "./Pages/NotFound";
 import Teesheet from "./Pages/Teesheet";
+import Layout from "./components/Layout";
+import Checkout from "./Pages/Checkout";
+import { LoginProvider } from "./context/LoginContext";
+import Account from "./Pages/Account";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="login" element={<LoginSignup />}/>
-          <Route path="*" element={<NotFound />} /> 
-          <Route path="book" element={<Teesheet />} />
-          {/*         
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> 
-          */}
-        </Route>
-      </Routes>
-  </BrowserRouter>
+    <LoginProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<LoginSignup />} />
+            <Route path="book" element={<Teesheet />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="account" element={<Account />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </LoginProvider>
+
   );
 }
 
