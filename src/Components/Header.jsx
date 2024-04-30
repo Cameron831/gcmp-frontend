@@ -3,17 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../context/LoginContext';
 
 const Header = () => {
+    const loginContext = useLogin();
     const navigate = useNavigate();
 
-    const { loggedIn } = useLogin();
+    if (!loginContext) {
+        console.error('LoginContext not found');
+        return <p>Error: Context not available</p>;
+    }
+
+    const { loggedIn } = loginContext;
 
     return(
         <header style={headerStyle}>
             <div onClick={() => {navigate("/")}}>
-                Logo placeholder
+                Logo
             </div> 
             <div onClick={() => {navigate("/book")}}>
-                Book Now
+                Book
             </div>
             {!loggedIn && 
                 <div onClick={() => {navigate("/login")}}>
@@ -25,7 +31,9 @@ const Header = () => {
                     Account
                 </div>
             }
-            <h1>Golf Course Management Platform</h1>
+            <h1 onClick={() => {navigate("/")}}>
+                Golf Course Management Platform
+            </h1>
         </header>
     )
 }

@@ -16,7 +16,13 @@ const Teesheet = () => {
             const dateString = selectedDate.toISOString().split('T')[0];
             try {
                 const response = await axios.get(`http://localhost:3001/teetimes?date=${dateString}`);
-                const filteredTeetimes = response.data.filter(teetime => teetime.players.length < 4);
+                var filteredTeetimes = response.data.filter(teetime => teetime.players.length < 4);
+                const now = new Date();
+                now.setHours(now.getHours() - 7);
+                filteredTeetimes = filteredTeetimes.filter(teetime => {
+                    const teetimeDate = new Date(teetime.date);
+                    return teetimeDate > now;
+                })
                 setTeetimes(filteredTeetimes);
             } catch (error) {
                 console.error('There was an error fetching the teetimes:', error);
@@ -41,7 +47,11 @@ const Teesheet = () => {
                     showOutsideDays
                 />
                 <div>
-                    {teetimes.map((time, index) => (
+                    {(teetimes.length == 0) &&
+                        <p>No Available Teetimes</p>
+                    }
+                    
+                    {(teetimes.length != 0) && teetimes.map((time, index) => (
                         <Teetime key={index} time={time} />
                     ))}
                 </div>
