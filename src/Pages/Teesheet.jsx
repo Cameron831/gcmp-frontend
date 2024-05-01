@@ -6,7 +6,7 @@ import {format} from 'date-fns'
 import { DayPicker } from 'react-day-picker'
 
 const Teesheet = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState();
     const [teetimes, setTeetimes] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Teesheet = () => {
         const retrieveTeetimesForDay = async () => {
             const dateString = selectedDate.toISOString().split('T')[0];
             try {
-                const response = await axios.get(`http://localhost:3001/teetimes?date=${dateString}`);
+                const response = await axios.get(`http://senior-project-421916.appspot.com/teetimes?date=${dateString}`);
                 var filteredTeetimes = response.data.filter(teetime => teetime.players.length < 4);
                 const now = new Date();
                 now.setHours(now.getHours() - 7);

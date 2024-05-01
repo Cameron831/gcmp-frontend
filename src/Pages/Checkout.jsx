@@ -32,8 +32,8 @@ const Checkout = () => {
     
         try {
             const body = {"customer_id": account._id, "teetime_id": time._id, "numberOfPlayers": players.length + 1}
-            const reservationResponse = await axios.post(`http://localhost:3001/reservation`, body)
-            const response = await axios.put(`http://localhost:3001/teetime/reserve/${time._id}`, player);
+            const reservationResponse = await axios.post(`http://senior-project-421916.appspot.com/reservation`, body)
+            const response = await axios.put(`http://senior-project-421916.appspot.com/teetime/reserve/${time._id}`, player);
             navigate('/account')
         } catch (error) {
             console.error('Error submitting reservation:', error);

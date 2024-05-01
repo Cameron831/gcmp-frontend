@@ -18,7 +18,7 @@ export const LoginProvider = ({ children }) => {
     const verifyLogin = async (user, pass) => {
         try {
             const credentials = {"username": user, "password": pass};
-            const response = await axios.post('http://localhost:3001/customer/login', credentials);
+            const response = await axios.post('http://senior-project-421916.appspot.com/customer/login', credentials);
             if (response.status === 200) {
                 localStorage.setItem('userToken', response.data._id);
                 localStorage.setItem('user', JSON.stringify(response.data));

@@ -51,7 +51,7 @@ const Account = () => {
 
     const getPayments = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/customer/payment-method/${account._id}`)
+            const response = await axios.get(`http://senior-project-421916.appspot.com/customer/payment-method/${account._id}`)
             console.log(response)
             setPayments(response.data)
         } catch (error) {
@@ -63,7 +63,7 @@ const Account = () => {
         e.preventDefault();
         try {
             const payment = {"customer_id": account._id, "card_number": cardNumber, "exp": expMonth + "/" + expYear}
-            const response = await axios.post(`http://localhost:3001/payment-method`, payment)
+            const response = await axios.post(`http://senior-project-421916.appspot.com/payment-method`, payment)
             console.log(response)
             if(response.status === 201) {
                 getPayments()
@@ -81,7 +81,7 @@ const Account = () => {
 
     const removePayment = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3001/payment-method/${id}`)
+            const response = await axios.delete(`http://senior-project-421916.appspot.com/payment-method/${id}`)
             console.log(response)
             getPayments()
         } catch (error) {
@@ -92,7 +92,7 @@ const Account = () => {
 
     useEffect(() => {
         if (account && account._id) {
-            axios.get(`http://localhost:3001/reservation/${account._id}`)
+            axios.get(`http://senior-project-421916.appspot.com/reservation/${account._id}`)
                  .then(response => {
                     setReservations(response.data);
                     const now = new Date();
@@ -139,7 +139,7 @@ const Account = () => {
     
 
     if (!account) {
-        return <div>Loading...</div>;
+        return <div>Invalid URL</div>;
     }
 
     return (
