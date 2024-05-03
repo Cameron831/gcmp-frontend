@@ -82,22 +82,14 @@ const Account = () => {
     const removePayment = async (id) => {
         try {
             const response = await axios.delete(`http://senior-project-421916.appspot.com/payment-method/${id}`)
-<<<<<<< HEAD
             //console.log(response)
-=======
-            console.log(response)
->>>>>>> 253df60821e2b3a63620e75e9d8d3eb4425036be
             getPayments()
         } catch (error) {
             console.log(error);
         }
     }
 
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 253df60821e2b3a63620e75e9d8d3eb4425036be
     useEffect(() => {
         if (account && account._id) {
             axios.get(`http://senior-project-421916.appspot.com/reservation/${account._id}`)
@@ -108,22 +100,14 @@ const Account = () => {
                     const past = [];
                     const upcoming = [];
                     response.data.forEach(reservation => {
-<<<<<<< HEAD
                         if(reservation.teetime_id != null) {
                             const reservationDate = new Date(reservation.teetime_id.date)
-=======
-                        const reservationDate = new Date(reservation.teetime_id.date);
-                        console.log(reservationDate)
->>>>>>> 253df60821e2b3a63620e75e9d8d3eb4425036be
                         if (reservationDate < now) {
                             past.push(reservation);
                         } else {
                             upcoming.push(reservation);
                         }
-<<<<<<< HEAD
                         }
-=======
->>>>>>> 253df60821e2b3a63620e75e9d8d3eb4425036be
                     });
                     setPastReservations(past);
                     setUpcomingReservations(upcoming);
@@ -153,7 +137,7 @@ const Account = () => {
               v = num % 100;
         return num + (s[(v-20)%10] || s[v] || s[0]);
     }
-    
+
 
     if (!account) {
         return <div>Invalid URL</div>;
@@ -226,11 +210,7 @@ const Account = () => {
                  <div key={index}>
                     <p>
                         {formatDate(reservation.teetime_id.date)}        
-<<<<<<< HEAD
                         {reservation.numberOfPlayers} Players
-=======
-                        {reservation.numberOfPlayers} Players 
->>>>>>> 253df60821e2b3a63620e75e9d8d3eb4425036be
                     </p>
                 </div>
             ))}
