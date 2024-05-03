@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { format, parseISO} from 'date-fns';
 import axios from 'axios';
 import Modal from '../components/Modal';
+import Reservation from '../components/Reservation';
 
 const Account = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -13,7 +14,6 @@ const Account = () => {
     const [expMonth, setExpMonth] = useState('');
     const [expYear, setExpYear] = useState('');
     const [zipCode, setZipCode] = useState('')
-    const [reservations, setReservations] = useState([])
     const [pastReservations, setPastReservations] = useState([]);
     const [upcomingReservations, setUpcomingReservations] = useState([]);
 
@@ -52,7 +52,6 @@ const Account = () => {
     const getPayments = async () => {
         try {
             const response = await axios.get(`http://senior-project-421916.appspot.com/customer/payment-method/${account._id}`)
-            console.log(response)
             setPayments(response.data)
         } catch (error) {
             console.log(error);
@@ -64,7 +63,6 @@ const Account = () => {
         try {
             const payment = {"customer_id": account._id, "card_number": cardNumber, "exp": expMonth + "/" + expYear}
             const response = await axios.post(`http://senior-project-421916.appspot.com/payment-method`, payment)
-            console.log(response)
             if(response.status === 201) {
                 getPayments()
                 setAddingPayment(false)
@@ -81,20 +79,17 @@ const Account = () => {
 
     const removePayment = async (id) => {
         try {
-            const response = await axios.delete(`http://senior-project-421916.appspot.com/payment-method/${id}`)
-            //console.log(response)
+            await axios.delete(`http://senior-project-421916.appspot.com/payment-method/${id}`)
             getPayments()
         } catch (error) {
             console.log(error);
         }
     }
 
-
     useEffect(() => {
         if (account && account._id) {
             axios.get(`http://senior-project-421916.appspot.com/reservation/${account._id}`)
                  .then(response => {
-                    setReservations(response.data);
                     const now = new Date();
                     now.setHours(now.getHours() - 7);
                     const past = [];
@@ -114,7 +109,7 @@ const Account = () => {
                  })
                  .catch(error => console.error('Error fetching reservations:', error));
         }
-    }, [account]);
+    }, [account, upcomingReservations]);
 
     const formatDate = (date) => {
         const d = parseISO(date);
@@ -208,12 +203,10 @@ const Account = () => {
             <p>Upcoming Reservations</p>
             {upcomingReservations.map((reservation, index) => (
                  <div key={index}>
-                    <p>
-                        {formatDate(reservation.teetime_id.date)}        
-                        {reservation.numberOfPlayers} Players
-                    </p>
+                    <Reservation date={reservation.teetime_id.date} numPlayers={reservation.numberOfPlayers} res={reservation}/>
                 </div>
             ))}
+
 
             <p>Past Reservations</p>
             {pastReservations.map((reservation, index) => (

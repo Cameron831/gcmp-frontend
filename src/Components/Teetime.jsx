@@ -13,7 +13,7 @@ const Teetime = ({ time }) => {
     const [price, setPrice] = useState(0)
 
     const navigateToCheckout = () => {
-        navigate('/checkout', { state: { time, price} });
+        navigate('/reserve', { state: { time, price} });
     };
 
     useEffect(() => {

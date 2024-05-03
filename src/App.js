@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import Checkout from "./Pages/Checkout";
 import { LoginProvider } from "./context/LoginContext";
 import Account from "./Pages/Account";
+import Reserve from "./Pages/Reserve";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<LoginSignup />} />
             <Route path="book" element={<Teesheet />} />
+            <Route path="reserve" element={<Reserve />}/>
             <Route path="checkout" element={<Checkout />} />
             <Route path="*" element={<NotFound />} />
             <Route path="account" element={<Account />} />

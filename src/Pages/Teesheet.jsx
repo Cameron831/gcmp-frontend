@@ -30,7 +30,7 @@ const Teesheet = () => {
         };
     
         retrieveTeetimesForDay();
-    }, [selectedDate]); // Only selectedDate is necessary here
+    }, [selectedDate]);
 
     let footer = <p>Pick a day</p>
     if(selectedDate) {
@@ -47,11 +47,11 @@ const Teesheet = () => {
                     showOutsideDays
                 />
                 <div>
-                    {(teetimes.length == 0) &&
+                    {(teetimes.length === 0) &&
                         <p>No Available Teetimes</p>
                     }
                     
-                    {(teetimes.length != 0) && teetimes.map((time, index) => (
+                    {(teetimes.length !== 0) && teetimes.map((time, index) => (
                         <Teetime key={index} time={time} />
                     ))}
                 </div>
