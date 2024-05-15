@@ -1,0 +1,37 @@
+.home-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.home-image {
+    width: 100%;
+    height: auto;
+}
+
+.home-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;;
+}
+
+.home-button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding: 10px 20px;
+    background-color: transparent; /* Make the background transparent */
+    color: white;
+    border: 2px solid white; /* Add a white border */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.home-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly change background on hover */
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../context/LoginContext';
+import '../Styles/Header.css';
 
 const Header = () => {
     const loginContext = useLogin();
@@ -13,37 +14,23 @@ const Header = () => {
 
     const { loggedIn } = loginContext;
 
-    return(
-        <header style={headerStyle}>
-            <div onClick={() => {navigate("/")}}>
-                Logo
-            </div> 
-            <div onClick={() => {navigate("/book")}}>
-                Book
+    return (
+        <header className="header">
+            <div className="logo" onClick={() => { navigate("/") }}>
+                Golf Course Managment Platform
             </div>
-            {!loggedIn && 
-                <div onClick={() => {navigate("/login")}}>
-                    Login
-                </div>
-            }
-            {loggedIn && 
-                <div onClick={() => {navigate("/account")}}>
-                    Account
-                </div>
-            }
-            <h1 onClick={() => {navigate("/")}}>
-                Golf Course Management Platform
-            </h1>
+            <nav>
+                <div onClick={() => { navigate("/") }}>Course Homepage</div>
+                <div onClick={() => { navigate("/book") }}>Tee Times</div>
+                {!loggedIn &&
+                    <div onClick={() => { navigate("/login") }}>Log In</div>
+                }
+                {loggedIn &&
+                    <div onClick={() => { navigate("/account") }}>Account</div>
+                }
+            </nav>
         </header>
-    )
-}
-
-const headerStyle = {
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    padding: '10px 20px',
-    textAlign: 'center',
-    fontSize: '24px'
+    );
 };
 
 export default Header;

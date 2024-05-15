@@ -1,0 +1,61 @@
+/* Filter.css */
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #1E90FF;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.filter-item span {
+    margin-right: 10px;
+}
+
+.filter-item input[type="date"] {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 5px;
+    outline: none;
+    font-size: 16px;
+    width: 200px;
+}
+
+.filter-item select {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 5px;
+    outline: none;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.calendar-button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.calendar-icon {
+    margin-left: -30px; /* Adjust to align properly with input field */
+}

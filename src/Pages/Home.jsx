@@ -1,15 +1,19 @@
 import React from 'react';
-import courseImage from '../assets/course.jpeg'
+import courseImage from '../assets/course.jpeg';
 import { useNavigate } from 'react-router-dom';
+import '../Styles/Home.css'; // Import the new CSS file
 
 const Home = () => {
     const navigate = useNavigate();
 
     return (
         <div>
-            {/* Original size: 10172 x 4489 */}
-            <img src={courseImage} alt='Course' width="100%" />
-            <button onClick={() => {navigate("/book")}}>Book Now!</button>
+            <div className="home-container">
+                <img src={courseImage} alt="Course" className="home-image" />
+                <div className="home-text">Golf Course Management Platform
+                </div>
+                <button className="home-button" onClick={() => { navigate("/book") }}>BOOK A TEE TIME</button>
+            </div>
             <h1>Whispering Cliffs Golf Resort</h1>
             <p>
                 Located just minutes from the dramatic coastline of the North Atlantic, 

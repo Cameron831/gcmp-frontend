@@ -1,0 +1,83 @@
+/* Reserve.css */
+.reservation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 50vh; /* Ensure it takes full height of the viewport */
+}
+
+.reservation-details {
+    display: flex;
+    width: 120%;
+    max-width: 900px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.details-left, .details-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.details-left {
+    border-right: 1px solid #ddd;
+}
+
+.player-info div, .player-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.player-row button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.back-button, .reserve-button {
+    display: inline-block;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.back-button {
+    background: #ccc;
+    color: #333;
+}
+
+.reserve-button {
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+}
+
+.course-info h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.course-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.course-info h3 {
+    margin-top: 20px;
+    color: #4CAF50;
+    font-size: 20px;
+}

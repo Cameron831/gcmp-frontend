@@ -5,6 +5,8 @@ import { format, parseISO} from 'date-fns';
 import axios from 'axios';
 import Modal from '../components/Modal';
 import Reservation from '../components/Reservation';
+import '../Styles/Account.css';  // Ensure you import the CSS file
+
 
 const Account = () => {
     const [isModalOpen, setModalOpen] = useState(false);
